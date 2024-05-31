@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="styleyou.css">
+    <link rel="icon" href="Logo App You.png"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTA: Adicione o elemento <FORM> a seguir à sua página.                 -->
+<!--  ----------------------------------------------------------------------  -->
+
+<body>
+    <div class="form-container"id="myform">
+        <img src="YOU_logo_Login.png" alt="Logo" />
+        <form 
+        action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DDw000005FDf7"
+            method="POST" class="formulario"  onsubmit="return validarFormulario();">
+
+            <input type=hidden name="oid" value="00DDw000005FDf7">
+            <input type=hidden name="retURL"
+                value="">
+
+            <!--  ----------------------------------------------------------------------  -->
+            <!--  NOTA: Estes campos são elementos de depuração opcionais. Remova o       -->
+            <!--  comentário dessas linhas se quiser testar no modo de depuração.         -->
+            <!--  <input type="hidden" name="debug" value=1>                              -->
+            <!--  <input type="hidden" name="debugEmail"                                  -->
+            <!--  value="guilherme.santiago@elera.io">                                    -->
+            <!--  ----------------------------------------------------------------------  -->
+
+            <input id="first_name" maxlength="40" name="first_name" size="20" type="text" placeholder="Primeiro Nome" />
+
+            <input id="last_name" maxlength="80" name="last_name" size="20" type="text" placeholder="Sobrenome" />
+
+            <input id="email" maxlength="80" name="email" size="20" type="text" placeholder="Email" />
+
+            <input id="mobile" maxlength="40" name="mobile" size="20" type="number" placeholder="Celular" />
+
+            <select id="00NDw000003ARAZ" name="00NDw000003ARAZ" title="Empreendimento de Interesse" class="selectUser"
+                required>
+                <option value="Selecione Empreendimento de Interesse">Selecione Empreendimento de Interesse</option>
+                <option value="SPTECH">SPTECH</option>
+                <option value="Empreendimento Paulista
+                    ">Empreendimento Paulista
+                </option>
+                <option value="Santiago Company
+                    ">Santiago Company
+                </option>
+                <option value="Avenida Paulista
+                    ">Avenida Paulista
+                </option>
+            </select>
+
+            <select id="00NDw000003AN3K" name="00NDw000003AN3K" title="Canal de Atendimento">
+                <option value="Selecione Canal de Atendimento">Selecione Canal de Atendimento</option>
+                <option value="Fale conosco">Fale conosco</option>
+                <option value="Chat">Chat</option>
+                <option value="Telefone">Telefone</option>
+                <option value="Loja">Loja</option>
+                <option value="Stand">Stand</option>
+                <option value="WhatsApp">WhatsApp</option>
+            </select>
+
+            <select id="lead_source" name="lead_source">
+                <option value="Selecione Origem do lead">Selecione Origem do lead</option>
+                <option value="Outdoor">Outdoor</option>
+                <option value="Radio">Radio</option>
+                <option value="Televisão">Televisão</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Publicações">Publicações</option>
+                <option value="Twitter">Twitter</option>
+                <option value="Facebook Ads">Facebook Ads</option>
+                <option value="Wi-Fi">Wi-Fi</option>
+                <option value="Site You">Site You</option>
+                <option value="Landing Page">Landing Page</option>
+                <option value="TikTok">TikTok</option>
+                <option value="Youtube">Youtube</option>
+                <option value="Tapume">Tapume</option>
+                <option value="Anúncio de Loja">Anúncio de Loja</option>
+            </select>
+
+                <div class="direction_button">
+                    <button type="submit" name="submit" id="submit" value="Enviar" class="button">
+                    Enviar
+                </button>
+                </div>
+                
+                
+            
+        </form>
+    </div>
+    <div id="carregamento" class="carregamento">
+        <div id="loading" class="loading-overlay">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+</body>
+
+</html>
+<script>
+    function validarFormulario() {
+        var primeiroNome = document.getElementById('first_name').value;
+        var sobrenome = document.getElementById('last_name').value;
+        var email = document.getElementById('email').value;
+        var celular = document.getElementById('mobile').value;
+        var empreendimento = document.getElementById('00NDw000003ARAZ').value;
+        var canalAtendimento = document.getElementById('00NDw000003AN3K').value;
+        var origemLead = document.getElementById('lead_source').value;
+
+        // Adicione suas validações aqui. Por exemplo:
+        if (primeiroNome == "") {
+            Swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: "Por favor, preencha o campo de primeiro nome",
+                confirmButtonColor: '#F57A45',
+                background: '#f0f0f0',
+                iconColor: '#000000',
+                timer: 10000
+            });
+            return false;
+        }
+
+        if (sobrenome == "") {
+            Swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: "Por favor, preencha o campo de sobrenome",
+                confirmButtonColor: '#F57A45',
+                background: '#f0f0f0',
+                iconColor: '#000000',
+                timer: 10000
+            });
+            return false;
+        }
+
+        if (email == "") {
+            Swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: "Por favor, preencha o campo de email",
+                confirmButtonColor: '#F57A45',
+                background: '#f0f0f0',
+                iconColor: '#000000',
+                timer: 10000
+            });
+            return false;
+        }
+
+        if (celular == "") {
+            Swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: "Por favor, preencha o campo de celular",
+                confirmButtonColor: '#F57A45',
+                background: '#f0f0f0',
+                iconColor: '#000000',
+                timer: 10000
+            });
+            return false;
+        }
+
+
+
+        // Validação de nome e sobrenome
+        var regexNome = /^[A-Za-z]+$/;
+        if (!regexNome.test(primeiroNome) || !regexNome.test(sobrenome)) {
+            Swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: "Nome e sobrenome devem conter apenas letras",
+                confirmButtonColor: '#F57A45',
+                background: '#f0f0f0',
+                iconColor: '#000000',
+                timer: 10000
+            });
+            return false;
+        }
+
+        if (celular.length != 11) {
+            Swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: "O número de celular deve ter até 11 dígitos",
+                confirmButtonColor: '#F57A45',
+                background: '#f0f0f0',
+                iconColor: '#000000',
+                timer: 10000
+            });
+            return false;
+        }
+
+        // Validação de email
+        var regexEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.com)?$/i;
+        if (!regexEmail.test(email)) {
+            Swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: "Email inválido, deve conter '@' e '.com'",
+                confirmButtonColor: '#F57A45',
+                background: '#f0f0f0',
+                iconColor: '#000000',
+                timer: 10000
+            });
+            return false;
+        }
+
+        if(empreendimento == "Selecione Empreendimento de Interesse") {
+            Swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: "Por favor, selecione um empreeendimento de interesse",
+                confirmButtonColor: '#2C2C2C',
+                background: '#F0F0F0',
+                iconColor: '#000000',
+                timer: 10000
+            });
+            return false;
+        }
+        if (canalAtendimento == "Selecione Canal de Atendimento") {
+            Swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: "Por favor, selecione um canal de atendimento",
+                confirmButtonColor: '#2C2C2C',
+                background: '#F0F0F0',
+                iconColor: '#000000',
+                timer: 10000
+            });
+            return false;
+        }
+        if (origemLead == "Selecione Origem do lead") {
+            Swal.fire({
+                icon: "error",
+                title: "Erro",
+                text: "Por favor, selecione uma origem de lead",
+                confirmButtonColor: '#2C2C2C',
+                background: '#F0F0F0',
+                iconColor: '#000000',
+                timer: 10000
+            });
+            return false;
+        }
+
+        enviarSalesforce();
+        return true;
+    }
+
+    function enviarSalesforce() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Cadastro realizado com sucesso!',
+            text: 'Seu cadastro foi realizado com sucesso.',
+            confirmButtonColor: '#F57A45',
+            background: '#f0f0f0',
+            iconColor: '#000000',
+            timer: 10000
+        });
+    }
+</script>
